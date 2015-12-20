@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/WEB-INF/templates/default.xhtml">
+    <ui:define name="content">
+        <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+            <div class="mdl-card mdl-cell mdl-cell--9-col-desktop">
+                <div class="mdl-card__supporting-text">
+                    <h4>Add note</h4>
+
+                    <h:form id="createf">
+                        <h:messages styleClass="messages"
+                                    errorClass="mdl-badge" infoClass="mdl-badge"
+                                    warnClass="mdl-badge" globalOnly="true" />
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--9-col">
+                            <h:inputText id="title" value="#{editNote.titel}" styleClass="mdl-textfield__input" />
+                            <label class="mdl-textfield__label" for="title">Note title...</label>
+                            <h:inputHidden id="id" value="#{editNote.id}" />
+                            <h:message for="title" errorClass="mdl-badge" />
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--9-col">
+                            <h:inputTextarea id="description" row="8" value="#{editNote.description}" styleClass="mdl-textfield__input" />
+                            <label class="mdl-textfield__label" for="description">Note description...</label>
+                            <h:message for="description" errorClass="mdl-badge" />
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--9-col">
+                            <h:inputText id="percentDone" value="#{editNote.percentDone}" styleClass="mdl-textfield__input" />
+                            <label class="mdl-textfield__label" for="description">Percent done</label>
+                            <h:message for="percentDone" errorClass="mdl-badge" />
+                        </div>
+                        <div class="mdl-card__actions">
+                            <h:commandButton id="update" action="#{editNoteController.update}" value="Save" styleClass="mdl-button"></h:commandButton>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </section>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/WEB-INF/templates/default.xhtml">
+    <ui:define name="content">
+        <ui:repeat value="#{notes}" var="note">
+            <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                <div class="mdl-card mdl-cell mdl-cell--9-col-desktop">
+                    <div class="mdl-card__title">
+                        #{note.titel}
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        #{note.description}
+                    </div>
+                    <input class="mdl-slider mdl-js-slider" type="range"
+                           min="0" max="100" value="#{note.percentDone}" tabindex="0"/>
+                    <div class="mdl-card__actions">
+                        <a href="#{request.contextPath}/edit.xhtml?id=#{note.id}" class="mdl-button">Edit this note</a>
+                        <a href="#" class="mdl-button">Delete</a>
+                    </div>
+                </div>
+            </section>
+        </ui:repeat>
+    </ui:define>
+</ui:composition>
